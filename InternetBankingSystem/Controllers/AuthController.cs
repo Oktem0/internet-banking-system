@@ -22,6 +22,12 @@ namespace InternetBankingSystem.Controllers
         {
             return View();
         }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Login", "Auth");
+        }
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
@@ -36,6 +42,10 @@ namespace InternetBankingSystem.Controllers
                 ViewBag.Error = "E-posta veya şifre hatalı!";
                 return View();
             }
+
+            HttpContext.Session.SetInt32("UserId", user.Id);
+            HttpContext.Session.SetString("FullName", user.FullName);
+            HttpContext.Session.SetString("Role", user.Role);
 
             return RedirectToAction("Index", "Home");
         }

@@ -14,10 +14,15 @@ namespace InternetBankingSystem.Controllers
         }
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetInt32("UserId") == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
             var userCount = _context.Users.Count();
 
             ViewBag.UserCount = userCount;
-            
+            ViewBag.FullName = HttpContext.Session.GetString("FullName");
+
             return View();
         }
 
