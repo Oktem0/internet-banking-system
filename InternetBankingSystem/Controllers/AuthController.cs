@@ -18,6 +18,27 @@ namespace InternetBankingSystem.Controllers
         {
             return View();
         }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(string email, string password)
+        {
+            string hashedPassword = HashPassword(password);
+
+            var user = _context.Users.FirstOrDefault(x =>
+                x.Email == email &&
+                x.PasswordHash == hashedPassword);
+
+            if (user == null)
+            {
+                ViewBag.Error = "E-posta veya şifre hatalı!";
+                return View();
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
         [HttpPost]
         public IActionResult Register(User user)
         {
