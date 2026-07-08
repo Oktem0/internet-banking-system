@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<h2>Kayıt Ol</h2>
+
+<form method="post">
+
+    <div>
+        <label>Ad Soyad</label><br />
+        <input type="text" name="FullName" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>TC Kimlik No</label><br />
+        <input type="text" name="TcNo" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>E-Posta</label><br />
+        <input type="email" name="Email" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>Telefon</label><br />
+        <input type="text" name="PhoneNumber" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>Şifre</label><br />
+        <input type="password" name="PasswordHash" />
+    </div>
+
+    <br />
+
+    <button type="submit">Kayıt Ol</button>
+
+</form>
