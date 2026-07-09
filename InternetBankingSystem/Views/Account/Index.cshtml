@@ -1,0 +1,29 @@
+﻿@model List<InternetBankingSystem.Models.Account>
+
+@{
+    ViewData["Title"] = "Hesaplarım";
+}
+
+<h2>Hesaplarım</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Hesap No</th>
+            <th>IBAN</th>
+            <th>Para Birimi</th>
+            <th>Bakiye</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.AccountNumber</td>
+                <td>@account.IBAN</td>
+                <td>@account.Currency</td>
+                <td>@account.Balance</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -16,7 +16,18 @@ namespace InternetBankingSystem.Controllers
         }
         public IActionResult Register()
         {
-            return View();
+            int? userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            var accounts = _context.Accounts
+                .Where(x => x.UserId == userId)
+                .ToList();
+
+            return View(accounts);
         }
         public IActionResult Login()
         {
